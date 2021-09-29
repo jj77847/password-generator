@@ -1,18 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numberChars = "0123456789";
-var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerChars = "abcdefghijklmnopqrstuvwxyz";
-var allChars = numberChars + upperChars + lowerChars;
-var randPasswordArray = Array(passwordLength);
-randPasswordArray[0] = numberChars;
-randPasswordArray[1] = upperChars;
-randPasswordArray[2] = lowerChars;
 
-function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-  }
-
+function generatePassword() {
+  // PLEASE ADD ALL YOUR CODE HERE
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -25,5 +16,16 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// User Flow from notes.md
 
-function generatePassword(passwordLength) {
+// Click on generate password button
+// Presented with criteria
+// Fill in the criteria
+// Password should appear on the page
+// Steps
+
+// Declare a function generatePassword
+// Declare const for lowercase abcdefghijklmnopqrstuvwxyz
+// Declare const for uppercase ABCDEFGHIJKLMNOPQRSTUVWXYZ
+// Declare const for numeric 1234567890
+// Declare const for specialCharacters " !"#$%&'()*+,-./:;<=>?@[]^_`{|}~"
