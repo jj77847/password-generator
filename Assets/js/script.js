@@ -2,8 +2,19 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  // PLEASE ADD ALL YOUR CODE HERE
+  prompt = "Please Choose a Password up to 8 characters and less than 120";
+
+  const confirm = lowercase "abcdefghijklmnopqrstuvwxyz"
+  const uppercase =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  const numeric = "1234567890"
+  const specialCharacters = " !"#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+
+  confirm;
+  confirm;
+  confirm;
 }
+
+const = 
 
 // Write password to the #password input
 function writePassword() {
