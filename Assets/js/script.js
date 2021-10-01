@@ -26,18 +26,18 @@ function generatePassword() {
   }
 
   var collectionOfValids = [];
-  var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  var lowerCaseChar = "abcdefghiklmnopqrsttuvwxtz".split("");
-  var numberChar = "0123456789".split("");
-  var specialChar = "*&^%$#@!?><{}".split("");
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  var lowerCase = "abcdefghiklmnopqrsttuvwxtz".split("");
+  var number = "0123456789".split("");
+  var special = "*&^%$#@!?><{}".split("");
 
   // we need a confirm to ask the user if they want to use lowercase
   var lowerCaseConfirm = confirm(
     "Do you want your password to include lowercase letters?"
   );
   if (lowerCaseConfirm === true) {
-    for (var i = 0; i < lowerCaseChar.length; i++) {
-      collectionOfValids.push(lowerCaseChar[i]);
+    for (var i = 0; i < lowerCase.length; i++) {
+      collectionOfValids.push(lowerCase[i]);
     }
   }
   // we need a confirm to ask the user if they want to use uppercase
@@ -45,15 +45,15 @@ function generatePassword() {
     "Do you want your password to include uppercase letters?"
   );
   if (upperCaseConfirm === true) {
-    for (var i = 0; i < upperCaseChar.length; i++) {
-      collectionOfValids.push(upperCaseChar[i]);
+    for (var i = 0; i < upperCase.length; i++) {
+      collectionOfValids.push(upperCase[i]);
     }
   }
   // we need a confirm to ask the user if they want to use numeric
   var numberConfirm = confirm("Do you want your password to include numbers");
   if (numberConfirm === true) {
-    for (var i = 0; i < numberChar.length; i++) {
-      collectionOfValids.push(numberChar[i]);
+    for (var i = 0; i < number.length; i++) {
+      collectionOfValids.push(number[i]);
     }
   }
   // we need a confirm to ask the user if they want to use special characters
@@ -61,8 +61,8 @@ function generatePassword() {
     "Do you want your password to include special characters?"
   );
   if (specialConfirm === true) {
-    for (var i = 0; i < specialChar.length; i++) {
-      collectionOfValids.push(specialChar[i]);
+    for (var i = 0; i < special.length; i++) {
+      collectionOfValids.push(special[i]);
     }
   }
 
