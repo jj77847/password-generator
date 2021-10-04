@@ -8,4 +8,4 @@ Built a password generator focusing on Javascript.
 
 ### Screenshot of website
 
-<img width="1440" alt="Website Screenshot" src="./Assets/images/password-generator-screenshot.png">
+<img width="1440" alt="Website Screenshot" src="./assets/images/password-generator-screenshot.png">
