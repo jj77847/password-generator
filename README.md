@@ -9,3 +9,5 @@ Built a password generator focusing on Javascript.
 ### Screenshot of website
 
 <img width="1440" alt="Website Screenshot" src="./assets/images/password-generator-screenshot.png">
+
+The password generator was given specific rules about what characters and how many can be used to generate a password.
