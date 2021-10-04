@@ -17,7 +17,6 @@ function generatePassword() {
   );
 
   const lengthConfirm = parseInt(passLength);
-  console.log(lengthConfirm);
 
   // choose a length of at least 8 characters and no more than 128 characters
   if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
@@ -77,7 +76,6 @@ function generatePassword() {
       collectionOfValids[Math.floor(Math.random() * collectionOfValids.length)];
   }
 
-  console.log(collectionOfValids);
   return randomPassword;
 }
 
