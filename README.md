@@ -4,7 +4,7 @@ Built a password generator focusing on Javascript. The password generator was gi
 
 ## Link to webpage.
 
-[link:](https://jj77847.github.io/password-generator/)
+link: https://jj77847.github.io/password-generator/
 
 ### Screenshot of website
 
