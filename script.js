@@ -1,6 +1,36 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function generatePassword() {
+  const passwordOptions = questions();
+  const possibleCombo = [];
+  const finalPassword = "";
+
+  if (passwordOptions.askNumbers) {
+    for (var i of numbers) possibleCombo.push(i);
+  }
+  if (passwordOptions.askLowerCase) {
+    for (var i of lowerCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askUpperCase) {
+    for (var i of upperCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askSpecial) {
+    for (var i of special) possibleCombo.push(i);
+  }
+
+  console.log(possibleCombo);
+
+  for (var i = 0; i < passwordOptions.length; i++) {
+    finalPassword +=
+      possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
+  }
+
+  console.log(finalPassword);
+
+  return finalPassword;
+}
+
 // Created Arrays of Possible Character Choices
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const upperCase = [
@@ -114,32 +144,6 @@ function questions() {
     else isValid = true;
   } while (!isValid);
   return responses;
-}
-
-function generatePassword() {
-  const passwordOptions = questions();
-  const possibleCombo = [];
-  const finalPassword = "";
-
-  if (passwordOptions.askNumbers) {
-    for (var i of numbers) possibleCombo.push(i);
-  }
-  if (passwordOptions.askLowerCase) {
-    for (var i of lowerCase) possibleCombo.push(i);
-  }
-  if (passwordOptions.askUpperCase) {
-    for (var i of upperCase) possibleCombo.push(i);
-  }
-  if (passwordOptions.askSpecial) {
-    for (var i of special) possibleCombo.push(i);
-  }
-
-  for (var i = 0; i < passwordOptions.length; i++) {
-    finalPassword +=
-      possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
-  }
-
-  return finalPassword;
 }
 
 // Write password to the #password
