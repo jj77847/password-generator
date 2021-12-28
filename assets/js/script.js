@@ -1,82 +1,160 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Created Arrays of Possible Character Choices
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const upperCase = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+const lowerCase = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+const special = [
+  "@",
+  "%",
+  "+",
+  "/",
+  "'",
+  "!",
+  "#",
+  "$",
+  "^",
+  "?",
+  ":",
+  ",",
+  ")",
+  "(",
+  "}",
+  "{",
+  "]",
+  "[",
+  "~",
+  "-",
+  "_",
+  ".",
+];
+
+// Created function to ask user which options they wanted and generated answers
+function questions() {
+  const isValid = false;
+  do {
+    const length = prompt(
+      "Choose password Length between 8 and 128 characters"
+    );
+    const askNumbers = confirm("Do you want your password to include Numbers?");
+    const askLowerCase = confirm(
+      "Do you want your password to include Lower case letters?"
+    );
+    const askUpperCase = confirm(
+      "Do you want your password to include Upper case letters?"
+    );
+    const askSpecial = confirm(
+      "Do you want your password to include Special characters?"
+    );
+    const responses = {
+      length: length,
+      askNumbers: askNumbers,
+      askLowerCase: askLowerCase,
+      askUpperCase: askUpperCase,
+      askSpecial: askSpecial,
+    };
+    if (length < 8 || length > 128) alert("Choose number between 8 and 128");
+    else if (!askNumbers && !askLowerCase && !askUpperCase && !askSpecial)
+      alert(
+        "You need to add some numbers or characters please, between 8 and 128. Thank you"
+      );
+    else isValid = true;
+  } while (!isValid);
+  return responses;
+}
+
+function generatePassword() {
+  const passwordOptions = questions();
+  const possibleCombo = [];
+  const finalPassword = "";
+
+  if (passwordOptions.askNumbers) {
+    for (var i of numbers) possibleCombo.push(i);
+  }
+  if (passwordOptions.askLowerCase) {
+    for (var i of lowerCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askUpperCase) {
+    for (var i of upperCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askSpecial) {
+    for (var i of special) possibleCombo.push(i);
+  }
+
+  console.log(possibleCombo);
+
+  for (var i = 0; i < passwordOptions.length; i++) {
+    finalPassword +=
+      possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
+  }
+
+  console.log(finalPassword);
+
+  return finalPassword;
+}
+
+// Write password to the #password
 function writePassword() {
-  // new secure password
-  const password = generatePassword();
-  const passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
 
-function generatePassword() {
-  // prompt for the length of the password
-  const passLength = prompt(
-    "Please enter how many characters you would like your password to be. \nMust be between 8 - 128 characters."
-  );
-
-  const lengthConfirm = parseInt(passLength);
-
-  // choose a length of at least 8 characters and no more than 128 characters
-  if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
-    alert("Error. Choice is not valid. Please try again.");
-    return;
-  }
-
-  const collectionOfValids = [];
-  const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const lowerCase = "abcdefghiklmnopqrsttuvwxtz".split("");
-  const number = "0123456789".split("");
-  const special = "*&^%$#@!?><{}".split("");
-
-  // we need a confirm to ask the user if they want to use lowercase
-  const lowerCaseConfirm = confirm(
-    "Do you want your password to include lowercase letters?"
-  );
-  if (lowerCaseConfirm) {
-    for (let i = 0; i < lowerCase.length; i++) {
-      collectionOfValids.push(lowerCase[i]);
-    }
-  }
-
-  // we need a confirm to ask the user if they want to use uppercase
-  const upperCaseConfirm = confirm(
-    "Do you want your password to include uppercase letters?"
-  );
-  if (upperCaseConfirm) {
-    for (let i = 0; i < upperCase.length; i++) {
-      collectionOfValids.push(upperCase[i]);
-    }
-  }
-
-  // we need a confirm to ask the user if they want to use numeric
-  const numberConfirm = confirm("Do you want your password to include numbers");
-  if (numberConfirm) {
-    for (let i = 0; i < number.length; i++) {
-      collectionOfValids.push(number[i]);
-    }
-  }
-
-  // we need a confirm to ask the user if they want to use special characters
-  const specialConfirm = confirm(
-    "Do you want your password to include special characters?"
-  );
-  if (specialConfirm) {
-    for (let i = 0; i < special.length; i++) {
-      collectionOfValids.push(special[i]);
-    }
-  }
-
-  // using the number from above and the 4 booleans, create password
-  let randomPassword = "";
-  for (let i = 0; i < lengthConfirm; i++) {
-    collectionOfValids[Math.floor(Math.random() * collectionOfValids.length)];
-    randomPassword +=
-      collectionOfValids[Math.floor(Math.random() * collectionOfValids.length)];
-  }
-
-  return randomPassword;
-}
-
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
