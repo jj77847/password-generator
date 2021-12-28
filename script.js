@@ -3,9 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   // PLEASE ADD ALL YOUR CODE HERE
-  // Created Arrays of Possible Character Choices
-  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
   const upperCase = [
     "A",
     "B",
@@ -64,6 +61,8 @@ function generatePassword() {
     "z",
   ];
 
+  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
   const special = [
     "@",
     "%",
@@ -88,6 +87,105 @@ function generatePassword() {
     "_",
     ".",
   ];
+
+  // get criteria function
+  const getCriteria = function () {
+    const passwordLength = Number(
+      prompt("Choose a password length between 8-128 characters", "")
+    );
+
+    //input is in the range
+    if (passwordLength >= 8 && passwordLength <= 128) {
+      const useLowercase = confirm("Would you like to include lower case?");
+
+      const useUppercase = confirm("Would you like to use upper case?");
+
+      const useNumeric = confirm("Would you like to include numbers?");
+
+      const useSpecialCharacters = confirm(
+        "Would you like to include special characters?"
+      );
+
+      // user has answered false/no
+      if (
+        !useUppercase &&
+        !useLowercase &&
+        !useNumeric &&
+        !useSpecialCharacters
+      ) {
+        alert(
+          "You need to include at least 1 criteria to be in your password!"
+        );
+        return;
+      } else {
+        // this sets the object 'criteria' for my output
+        return {
+          length: passwordLength,
+          upper: useUppercase,
+          lower: useLowercase,
+          numbers: useNumeric,
+          special: useSpecialCharacters,
+        };
+      }
+    } else {
+      alert("Password length must be between 8 and 128, Please try again!");
+      return;
+    }
+  };
+
+  // select random characters
+  const getRandom = function (criteria) {
+    // empty array
+    const validValues = [];
+
+    // given criteria add relevant choices
+    if (criteria.lower) {
+      validValues.push(lowerCase);
+    }
+    if (criteria.upper) {
+      validValues.push(upperCase);
+    }
+    if (criteria.numbers) {
+      validValues.push(numeric);
+    }
+    if (criteria.special) {
+      validValues.push(specialChars);
+    }
+
+    // randomly generated numbers
+    const randomChoiceIndex = Math.floor(Math.random() * validValues.length);
+    const randomCharactersArray = validValues[randomChoiceIndex];
+    const randomCharacterIndex = Math.floor(
+      Math.random() * randomCharactersArray.length
+    );
+    const randomCharacter = randomCharactersArray[randomCharacterIndex];
+
+    return randomCharacter;
+  };
+
+  // password generation
+  const passwordGenerate = function (criteria) {
+    // empty password string
+    let myPassword = "";
+    for (let i = 0; i < criteria.length; i++) {
+      const randomCharacter = getRandom(criteria);
+      myPassword += randomCharacter;
+    }
+    return myPassword;
+  };
+
+  // Start of my main function
+  function generatePassword() {
+    //main order of code
+    const criteria = getCriteria();
+    if (criteria) {
+      const myPassword = passwordGenerate(criteria);
+
+      return myPassword;
+    } else {
+      return "";
+    }
+  }
 }
 
 // Write password to the #password input
