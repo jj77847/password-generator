@@ -8,7 +8,7 @@ link: https://jj77847.github.io/password-generator/
 
 ### Screenshot of website
 
-![website](./assets/password-generator-screenshot.png)
+![website](./assets/images/password-generator-screenshot.png)
 
 ## User Story
 
@@ -37,11 +37,3 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
-
-## Link to webpage.
-
-[link:] (https://jj77847.github.io/password-generator/)
-
-### Screenshot of website
-
-![website](assets/images/password-generator-screenshot.png)
