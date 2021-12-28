@@ -1,35 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword() {
-  const passwordOptions = questions();
-  const possibleCombo = [];
-  const finalPassword = "";
+// Write password to the #password
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  if (passwordOptions.askNumbers) {
-    for (var i of numbers) possibleCombo.push(i);
-  }
-  if (passwordOptions.askLowerCase) {
-    for (var i of lowerCase) possibleCombo.push(i);
-  }
-  if (passwordOptions.askUpperCase) {
-    for (var i of upperCase) possibleCombo.push(i);
-  }
-  if (passwordOptions.askSpecial) {
-    for (var i of special) possibleCombo.push(i);
-  }
-
-  console.log(possibleCombo);
-
-  for (var i = 0; i < passwordOptions.length; i++) {
-    finalPassword +=
-      possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
-  }
-
-  console.log(finalPassword);
-
-  return finalPassword;
+  passwordText.value = password;
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Created Arrays of Possible Character Choices
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -140,19 +121,40 @@ function questions() {
     };
     if (length < 8 || length > 128) alert("Choose number between 8 and 128");
     else if (!askNumbers && !askLowerCase && !askUpperCase && !askSpecial)
-      alert("Must choose at least one type.");
+      alert(
+        "You need to add some numbers or characters please, between 8 and 128. Thank you"
+      );
     else isValid = true;
   } while (!isValid);
   return responses;
 }
 
-// Write password to the #password
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+function generatePassword() {
+  const passwordOptions = questions();
+  const possibleCombo = [];
+  const finalPassword = "";
 
-  passwordText.value = password;
+  if (passwordOptions.askNumbers) {
+    for (var i of numbers) possibleCombo.push(i);
+  }
+  if (passwordOptions.askLowerCase) {
+    for (var i of lowerCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askUpperCase) {
+    for (var i of upperCase) possibleCombo.push(i);
+  }
+  if (passwordOptions.askSpecial) {
+    for (var i of special) possibleCombo.push(i);
+  }
+
+  console.log(possibleCombo);
+
+  for (var i = 0; i < passwordOptions.length; i++) {
+    finalPassword +=
+      possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
+  }
+
+  console.log(finalPassword);
+
+  return finalPassword;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
